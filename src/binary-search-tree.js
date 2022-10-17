@@ -20,7 +20,7 @@ class BinarySearchTree {
     this.root = null;
   }
   root() {
-     if (!this.root) {
+     if (this.root==null) {
       return null;
     }
      return this.root
@@ -56,11 +56,14 @@ class BinarySearchTree {
       if (!node) {
         return false;
       }
+      if (node.value === null) {
+        return false;
+      }
 
       if (node.value === value) {
         return true;
       }
-
+     
       return value < node.value ? 
         searchWithin(node.left, value) : 
         searchWithin(node.right, value);
@@ -71,7 +74,7 @@ class BinarySearchTree {
     return findWithin(this.root, value);
      function findWithin(node, value) {
       if (!node) {
-        return null;
+        return node;
       }
        if (node.value === value) {
         return node;
@@ -80,7 +83,7 @@ class BinarySearchTree {
         findWithin(node.left, value) : 
         findWithin(node.right, value);
   }
-  }
+}
   remove(value) {
      this.root = removeNode(this.root, value);
 
